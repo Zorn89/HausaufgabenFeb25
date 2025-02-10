@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragen und Antworten zu Backups</title>
+</head>
+<body>
+    <h1>Fragen und Antworten zum Thema Backups</h1>
+
+    <h2>1. Was sind Backups?</h2>
+    <p><strong>Backups</strong> sind Kopien von Daten, die zu einem bestimmten Zeitpunkt gesichert werden. Sie dienen dazu, wichtige Informationen oder Dateien vor Verlust zu schützen, falls diese durch <em>Systemfehler</em>, <u>Viruserkrankungen</u> oder menschliche Fehler gelöscht oder beschädigt werden.</p>
+    <p>Ein Backup kann auf verschiedenen Medien gespeichert werden, wie zum Beispiel auf externen Festplatten, in der Cloud oder auf <a href="https://de.wikipedia.org/wiki/Cloud-Computing" target="_blank"><u>Cloud-Servern</u></a>.</p>
+
+    <h2>2. Warum sollte man Backups machen?</h2>
+    <p>Backups sind eine der wichtigsten Sicherheitsvorkehrungen, um den Verlust wertvoller Daten zu verhindern. Ohne Backups können Daten unwiederbringlich verloren gehen, was zu ernsthaften <u>Problemen</u> für Unternehmen und Privatpersonen führen kann. Einige Gründe für Backups sind:</p>
+    <ul>
+        <li><strong>Schutz vor Datenverlust:</strong> Wenn ein Gerät oder eine Festplatte ausfällt, ermöglicht ein Backup die Wiederherstellung der Daten.</li>
+        <li><em>Wiederherstellung von Dateien:</em> Backups ermöglichen es, einzelne Dateien oder ganze Systeme wiederherzustellen, die versehentlich gelöscht oder beschädigt wurden.</li>
+        <li><u>Schutz vor Viren und Ransomware:</u> Wenn ein Virus das System infiziert, können Daten durch das Backup schnell wiederhergestellt werden.</li>
+    </ul>
+    <p>Weitere Details zu Sicherheitsaspekten und Backup-Strategien finden Sie in diesem <a href="https://www.bsi.bund.de/DE/Themen/Cyber-Sicherheit/IT-Sicherheit-im-Unternehmen/backup/backup_node.html" target="_blank">Artikel des Bundesamts für Sicherheit in der Informationstechnik</a>.</p>
+
+
+
+    <h1><u>Schau dir diesen Code für eine Datei backup.py an:</u></h1>
+    <ol>
+        <li><b>Importiert die Module shutil und datetime:</b>
+
+            shutil: Ein Modul, das verwendet wird, um Dateisystemoperationen wie das Kopieren von Verzeichnissen zu ermöglichen.
+            datetime: Ein Modul, das für die Arbeit mit Datums- und Zeitinformationen zuständig ist.</li>
+        <li><b>Definiert den Quellordner:</b>
+
+            backup_source = "C:/Users/Benutzer/Dokumente": Der Quellordner, dessen Inhalt gesichert werden soll, ist der Ordner „Dokumente“ des Benutzers.</li>
+        <li><b>den Zielordner für das Backup:</b>
+
+            backup_target = "D:/Backup_" + datetime.datetime.now().strftime("%Y%m%d%H%M"): Der Zielordner für das Backup wird mit einem Namen erstellt, der das aktuelle Datum und die Uhrzeit im Format YYYYMMDDHHMM enthält (z.B. Backup_202502101200).</li>
+        <li><b>Kopiert den Quellordner in den Zielordner:</b>
+
+            shutil.copytree(backup_source, backup_target): Der gesamte Inhalt des Quellordners (backup_source) wird in den Zielordner (backup_target) kopiert, einschließlich aller Unterverzeichnisse und Dateien.</li>
+        <li><b>Gibt eine Bestätigung aus:</b>
+
+            print(f"Backup erfolgreich: {backup_target}"): Nachdem das Backup abgeschlossen ist, gibt der Code eine Bestätigungsmeldung aus, die den Pfad des Zielordners anzeigt.</li>
+        
+       </ol>
+
+    <pre>
+        import shutil
+        import datetime
+        
+        backup_source = "C:/Users/Benutzer/Dokumente"
+        backup_target = "D:/Backup_" + datetime.datetime.now().strftime("%Y%m%d%H%M")
+        
+        shutil.copytree(backup_source, backup_target)
+        print(f"Backup erfolgreich: {backup_target}")
+        </pre>
+
+<h2>Gibt es einen Weg ein Script automatisch wiederholt auszuführen?
+    Also bspw. einmal pro Tag um 2 Uhr? Kannst du dir erklären wie das
+    automatische Backups ermöglicht?</h2>
+    <p>Ja. </p>
+    <ul>
+        <li><b>Windows Task Scheduler (Windows):</b>Auf Windows-Systemen kannst du den Task Scheduler (Aufgabenplanung) verwenden, um ein Skript zu einer bestimmten Zeit automatisch auszuführen. Du kannst ihn so konfigurieren, dass das Backup-Skript täglich um 2 Uhr nachts ausgeführt wird.</li>
+        <li><b>Cron Jobs (Linux/macOS):</b> Auf Linux- und macOS-Systemen kannst du den Cron-Job verwenden, der die Möglichkeit bietet, Skripte in festgelegten Intervallen auszuführen. Du kannst einen Cron-Job erstellen, der das Backup-Skript täglich um 2 Uhr ausführt.</li>
+      
+       </ul>
+
+</body>
+</html>
